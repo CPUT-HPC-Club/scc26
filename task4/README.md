@@ -183,13 +183,60 @@ You will encounter most of the expected tasks while you work through the Task. B
 By completing the first successful run and visualisation of the Quantum Volume micro-benchmark, the python code in `qv_experiment.py` script is as follows:<br>
 ```python
 # Paste you code here for marks
+from qiskit import *
+from qiskit.circuit.library import *
+from qiskit_aer import *
+import time
+import numpy as np
+
+def quant_vol(qubits=15, depth=10, shots=1):
+   sim = AerSimulator(method='statevector', device='CPU')
+   circuit = QuantumVolume(qubits, depth, seed=0)
+   circuit.measure_all()
+   circuit = transpile(circuit, sim)
+
+   start = time.time()
+   result = sim.run(circuit, shots=shots, seed_simulator=12345).result()
+   time_val = time.time() - start
+   return time_val
+
+
+num_qubits = np.arange(2, 10)
+qv_depth = 5
+num_shots = 10
+
+# Array for storing the output results
+results_array = []
+
+# iterate over qv depth and number of qubits
+for i in num_qubits:
+   results_array.append(quant_vol(qubits=i, shots=num_shots, depth=qv_depth))
+   # for debugging purposes you can print out the results
+
+# Print the results so we can see them
+print("\n--- Quantum Volume Results ---")
+for i, time_taken in enumerate(results_array):
+    q_count = num_qubits[i]
+    print(f"Qubits: {q_count} | Time: {time_taken:.4f} seconds")
+
+# Fill in the missing package and library
+import matplotlib.pyplot as plt
+
+plt.xlabel('Number of qubits')
+plt.ylabel('Time (sec)')
+plt.plot(num_qubits, results_array)
+plt.title('Quantum Volume Experiment with depth=' + str(qv_depth))
+plt.savefig('qv_experiment.png')
+
 ```
 
 When the above code is run and visualised in JupyterLab, the image below is generated,<br>
  
 > Add image for of initial qv_experiment.py result. When
+![Quantum Volume Graph](qv_experiment.png)
 > `num_qubits=(2,10)`, `qv_depth=5`, `num_shots=10`
 > This will also count as proof that you have successfully launched JupyterLab.
+![Quantum Volume Graph](qv_depth5.png)
 
 We will now consider what affect each parameter has on the outcome.
 
@@ -210,6 +257,8 @@ We will now consider what affect each parameter has on the outcome.
    Vary `num_qubits` and see how high you can go. Label visualisation of maximum as `qv_experiment_MAXqubits.png` in the images folder.<br>
    I only expect one image when you have reached the highest number of qubits the system can handle.<br>
    > `qubits`: number or list of physical qubits to be simulated for the experiment.
+![Max Qubits Graph](qv_experiment_MAXqubits.png)
+> We tested the system up to 30 qubits. As shown in the graph, the simulation time scales exponentially after 22 qubits, reaching approximately 66 seconds for 30 qubits
 
 
 *  ### Varying number of shots
@@ -217,3 +266,14 @@ We will now consider what affect each parameter has on the outcome.
    Write a section similar to [varying depth](#varying-volume-depth) discussing the affect of varying the number of shots.<br>
    Vary `num_shots`. Minimum of 2 images presented in an easily understandable format like a table or bullet points with discussion blocks.<br>
    >`shots`: used for sampling statistics, number of repetitions of each circuit. A larger number of shots will be more demanding on the system.
+
+
+  ### Observations on Varying Shots
+
+| Case | num_shots | Resulting Visualization |
+| :--- | :--- | :--- |
+| **Low Shots** | 100 | ![Shots 100](qv_shots_100.png) |
+| **High Shots** | 5000 | ![Shots 5000](qv_shots_5000.png) |
+
+**Discussion:**
+Increasing the number of shots directly increases the simulation time. Since each "shot" is a complete repetition of the quantum circuit execution to gather statistics, the workload scales linearly. While higher shots provide more accurate results on a real quantum processor by reducing statistical noise, in this classical simulation, it primarily serves to increase the computational demand on the CPU.

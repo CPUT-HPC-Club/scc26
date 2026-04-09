@@ -1,0 +1,22 @@
+HPL Benchmark Improvements - Task 3
+
+1. Output to file (+0.3 points): COMPLETE
+   - Changed HPL.dat line 3: "Task3.out" as output file name
+   - Changed HPL.dat line 4: "file" as device out (instead of 6)
+   - Result: Benchmark output goes to Task3.out instead of terminal
+
+2. Single test only (+0.4 points): COMPLETE
+   - Changed matrix size N from 4 to 1000
+   - Changed # of panel fact from 3 to 1 (using only Left)
+   - Changed # of recursive stopping criterium from 2 to 1
+   - Changed # of recursive panel fact from 3 to 1 (using only Left)
+   - Result: Runs 1 test instead of 18 combinations
+
+3. Different BLAS library - OpenBLAS (+0.7 points): COMPLETE
+   - Loaded OpenBLAS module: openBLAS/0.3.28-SANDYBRIDGE-vectorized-gcc-15.2.0-openmpi-5.0.10
+   - Modified Make.Task3 to use OpenBLAS library
+   - Successfully recompiled HPL with OpenBLAS
+   - Performance: ATLAS (0.98694 Gflops) → OpenBLAS (3.54600 Gflops)
+   - Speedup: ~3.6x faster
+
+TOTAL POINTS: 1.4/1.4 (100%)

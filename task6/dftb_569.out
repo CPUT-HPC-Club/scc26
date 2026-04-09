@@ -1,0 +1,114 @@
+=== Job Info ===
+Job ID:    569
+Nodes:     com7
+Tasks:     2
+Directory: /home/turbo_threads/dftb_water
+Started:   Wed 08 Apr 2026 11:10:26 SAST
+================
+|===============================================================================
+|
+|  DFTB+ development version (commit: 83e72f5d, base: 25.1)
+|
+|  Copyright (C) 2006 - 2025  DFTB+ developers group
+|
+|===============================================================================
+|
+|  When publishing results obtained with DFTB+, please cite the following
+|  reference:
+|
+|    Recent Developments in DFTB+, a Software Package for Efficient Atomistic
+|    Quantum Mechanical Simulations, J. Phys. Chem. A 129, 5373−5390 (2025).
+|    [https://doi.org/10.1021/acs.jpca.5c01146]
+|
+|  You should also cite additional publications crediting the parametrization
+|  data you use. Please consult the documentation of the SK-files for the
+|  references.
+|
+|===============================================================================
+
+Reading input file 'dftb_in.hsd'
+Parser version: 15
+
+--------------------------------------------------------------------------------
+***  Converting input from parser version 14 to parser version 15 ...
+***  Done.
+
+Reading SK-files:
+/home/turbo_threads/dftb_workspace/dftb_parameters/3ob-3-1/O-O.skf
+/home/turbo_threads/dftb_workspace/dftb_parameters/3ob-3-1/O-H.skf
+/home/turbo_threads/dftb_workspace/dftb_parameters/3ob-3-1/H-H.skf
+Done.
+
+
+Processed input in HSD format written to 'dftb_pin.hsd'
+
+Starting initialization...
+--------------------------------------------------------------------------------
+WARNING!
+-> Dipole printed for extended system : value printed is not well defined
+MPI processes:               2
+OpenMP threads:              8
+BLACS orbital grid size:     1 x 2
+BLACS atom grid size:        1 x 2
+Chosen random seed:          1281865021
+Current stacksize:           unlimited
+Mode:                        Static calculation
+Self consistent charges:     Yes
+SCC-tolerance:                 0.100000E-01
+Max. scc iterations:                    200
+Shell resolved Hubbard:      No
+Spin polarisation:           No
+Nr. of up electrons:           256.000000
+Nr. of down electrons:         256.000000
+Periodic boundaries:         Yes
+Electronic solver:           Relatively robust
+Mixer:                       Broyden mixer
+Mixing parameter:                  0.300000
+Nr. of chrg. vec. in memory:            200
+Max. SCC-cycles:                        200
+Electronic temperature:              0.100000E-07 H      0.272114E-06 eV
+Initial charges:             Set automatically (system chrg:   0.000E+00)
+Included shells:             O:  s, p
+                             H:  s
+K-points and weights:           1:  0.000000  0.000000  0.000000     1.000000
+
+K-points in absolute space:     1:  0.000000  0.000000  0.000000
+
+Extra options:
+                             Mulliken analysis
+
+--------------------------------------------------------------------------------
+
+***  Geometry step: 0
+
+ iSCC Total electronic   Diff electronic      SCC error    
+    1   -0.26321521E+03    0.00000000E+00    0.85219655E+00
+    2   -0.26345501E+03   -0.26321521E+03    0.54441950E+00
+    3   -0.26360666E+03   -0.23980101E+00    0.35045095E-01
+>> Charges saved for restart in charges.bin
+    4   -0.26360707E+03   -0.15164704E+00    0.78069323E-02
+
+Total Energy:                     -259.6780819778 H        -7066.2001 eV
+Extrapolated to 0K:               -259.6780819778 H        -7066.2001 eV
+Total Mermin free energy:         -259.6780819778 H        -7066.2001 eV
+Force related energy:             -259.6780819778 H        -7066.2001 eV
+
+
+--------------------------------------------------------------------------------
+DFTB+ running times                          cpu [s]             wall clock [s]
+--------------------------------------------------------------------------------
+Pre-SCC initialisation                 +       0.06 ( 14.5%)       0.24 ( 39.6%)
+SCC                                    +       0.33 ( 85.1%)       0.36 ( 59.4%)
+--------------------------------------------------------------------------------
+Missing                                +       0.00 (  0.4%)       0.01 (  1.0%)
+Total                                  =       0.39 (100.0%)       0.61 (100.0%)
+--------------------------------------------------------------------------------
+
+=== Results ===
+Total Energy:      -259.6780819778 H
+Total Wall Clock:  0.61 s
+Total CPU Time:    0.39 s
+SCC Cycles:        4
+SCC Status:        CONVERGED
+Completed:         Wed 08 Apr 2026 11:10:30 SAST
+================
