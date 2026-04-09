@@ -1,0 +1,24 @@
+[0;1;32m●[0m sshd.service - OpenSSH server daemon
+     Loaded: loaded (]8;;file://head.sisco/usr/lib/systemd/system/sshd.service/usr/lib/systemd/system/sshd.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (running)[0m since Mon 2026-04-06 19:52:28 SAST; 22h ago
+       Docs: ]8;;man:sshd(8)man:sshd(8)]8;;
+             ]8;;man:sshd_config(5)man:sshd_config(5)]8;;
+   Main PID: 1098 (sshd)
+      Tasks: 3 (limit: 203320)
+     Memory: 56.6M (peak: 85.3M)
+        CPU: 43.204s
+     CGroup: /system.slice/sshd.service
+             ├─[0;38;5;245m   1098 "sshd: /usr/sbin/sshd -D [listener] 1 of 10-100 startups"[0m
+             ├─[0;38;5;245m2280447 "sshd: nitro [priv]"[0m
+             └─[0;38;5;245m2280448 "sshd: nitro [net]"[0m
+
+Apr 07 18:34:54 head.sisco sshd[2264990]: [0;1;31m[0;1;39m[0;1;31merror: kex_exchange_identification: Connection closed by remote host[0m
+Apr 07 18:34:54 head.sisco sshd[2264990]: Connection closed by ::1 port 52342
+Apr 07 18:35:36 head.sisco sshd[2266938]: Accepted publickey for turbo_threads from ::1 port 57974 ssh2: ED25519 SHA256:cx1UTVMy2AmqIiEvOh3socpr9jPl9glTQzgC456nyXk
+Apr 07 18:35:36 head.sisco sshd[2266938]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_threads(uid=0)
+Apr 07 18:35:37 head.sisco sshd[2266964]: Accepted publickey for turbo_threads from ::1 port 57988 ssh2: ED25519 SHA256:cx1UTVMy2AmqIiEvOh3socpr9jPl9glTQzgC456nyXk
+Apr 07 18:35:37 head.sisco sshd[2266964]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_threads(uid=0)
+Apr 07 18:38:34 head.sisco sshd[2275300]: Accepted publickey for turbo_threads from ::1 port 50064 ssh2: ED25519 SHA256:cx1UTVMy2AmqIiEvOh3socpr9jPl9glTQzgC456nyXk
+Apr 07 18:38:34 head.sisco sshd[2275300]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_threads(uid=0)
+Apr 07 18:38:34 head.sisco sshd[2275344]: Accepted publickey for turbo_threads from ::1 port 50068 ssh2: ED25519 SHA256:cx1UTVMy2AmqIiEvOh3socpr9jPl9glTQzgC456nyXk
+Apr 07 18:38:34 head.sisco sshd[2275344]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_threads(uid=0)

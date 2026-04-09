@@ -1,0 +1,578 @@
+Authenticating with public key "clean_key"
+    +----------------------------------------------------------------------+
+    ¦                 • MobaXterm Personal Edition v26.1 •                 ¦
+    ¦               (SSH client, X server and network tools)               ¦
+    ¦                                                                      ¦
+    ¦ ? SSH session to straw_hats@10.10.10.1                               ¦
+    ¦   • Direct SSH      :  ?                                             ¦
+    ¦   • SSH compression :  ?                                             ¦
+    ¦   • SSH-browser     :  ?                                             ¦
+    ¦   • X11-forwarding  :  ?  (remote display is forwarded through SSH)  ¦
+    ¦                                                                      ¦
+    ¦ ? For more info, ctrl+click on help or visit our website.            ¦
+    +----------------------------------------------------------------------+
+
+Last login: Tue Apr  7 16:15:58 2026 from ::1
+[straw_hats@head ~]$ #!/bin/sh
+[straw_hats@head ~]$ #SBATCH --job-name=myjob
+[straw_hats@head ~]$ #SBATCH --time=00:30:00
+[straw_hats@head ~]$ #SBATCH --nodes=1
+[straw_hats@head ~]$ #SBATCH --ntasks=1
+[straw_hats@head ~]$ #SBATCH --cpus-per-task=4
+[straw_hats@head ~]$
+[straw_hats@head ~]$ echo "Hello from SLURM"
+Hello from SLURM
+[straw_hats@head ~]$ hostname
+head.sisco
+[straw_hats@head ~]$ sbatch job.sh
+sbatch: error: Unable to open file job.sh
+[straw_hats@head ~]$ cd task2
+-bash: cd: task2: No such file or directory
+[straw_hats@head ~]$ cd scc26
+[straw_hats@head scc26]$ cd task2
+[straw_hats@head task2]$ nano TEAMNAME.md
+[straw_hats@head task2]$ systemctl status sshd
+? sshd.service - OpenSSH server daemon
+     Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; preset: enabled)
+     Active: active (running) since Mon 2026-04-06 19:52:28 SAST; 22h ago
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+   Main PID: 1098 (sshd)
+      Tasks: 3 (limit: 203320)
+     Memory: 56.6M (peak: 85.3M)
+        CPU: 43.204s
+     CGroup: /system.slice/sshd.service
+             +-   1098 "sshd: /usr/sbin/sshd -D [listener] 1 of 10-100 startups"
+             +-2280447 "sshd: nitro [priv]"
+             +-2280448 "sshd: nitro [net]"
+
+Apr 07 18:34:54 head.sisco sshd[2264990]: error: kex_exchange_identification: Connection closed by remote host
+Apr 07 18:34:54 head.sisco sshd[2264990]: Connection closed by ::1 port 52342
+Apr 07 18:35:36 head.sisco sshd[2266938]: Accepted publickey for turbo_threads from ::1 port 57974 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:35:36 head.sisco sshd[2266938]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+Apr 07 18:35:37 head.sisco sshd[2266964]: Accepted publickey for turbo_threads from ::1 port 57988 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:35:37 head.sisco sshd[2266964]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+Apr 07 18:38:34 head.sisco sshd[2275300]: Accepted publickey for turbo_threads from ::1 port 50064 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:38:34 head.sisco sshd[2275300]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+Apr 07 18:38:34 head.sisco sshd[2275344]: Accepted publickey for turbo_threads from ::1 port 50068 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:38:34 head.sisco sshd[2275344]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+...skipping...
+? sshd.service - OpenSSH server daemon
+     Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; preset: enabled)
+     Active: active (running) since Mon 2026-04-06 19:52:28 SAST; 22h ago
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+   Main PID: 1098 (sshd)
+      Tasks: 3 (limit: 203320)
+     Memory: 56.6M (peak: 85.3M)
+        CPU: 43.204s
+     CGroup: /system.slice/sshd.service
+             +-   1098 "sshd: /usr/sbin/sshd -D [listener] 1 of 10-100 startups"
+             +-2280447 "sshd: nitro [priv]"
+             +-2280448 "sshd: nitro [net]"
+
+Apr 07 18:34:54 head.sisco sshd[2264990]: error: kex_exchange_identification: Connection closed by remote host
+Apr 07 18:34:54 head.sisco sshd[2264990]: Connection closed by ::1 port 52342
+Apr 07 18:35:36 head.sisco sshd[2266938]: Accepted publickey for turbo_threads from ::1 port 57974 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:35:36 head.sisco sshd[2266938]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+Apr 07 18:35:37 head.sisco sshd[2266964]: Accepted publickey for turbo_threads from ::1 port 57988 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:35:37 head.sisco sshd[2266964]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+Apr 07 18:38:34 head.sisco sshd[2275300]: Accepted publickey for turbo_threads from ::1 port 50064 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:38:34 head.sisco sshd[2275300]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+Apr 07 18:38:34 head.sisco sshd[2275344]: Accepted publickey for turbo_threads from ::1 port 50068 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:38:34 head.sisco sshd[2275344]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+ ^X^H...skipping...
+? sshd.service - OpenSSH server daemon
+     Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; preset: enabled)
+     Active: active (running) since Mon 2026-04-06 19:52:28 SAST; 22h ago
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+   Main PID: 1098 (sshd)
+      Tasks: 3 (limit: 203320)
+     Memory: 56.6M (peak: 85.3M)
+        CPU: 43.204s
+     CGroup: /system.slice/sshd.service
+             +-   1098 "sshd: /usr/sbin/sshd -D [listener] 1 of 10-100 startups"
+             +-2280447 "sshd: nitro [priv]"
+             +-2280448 "sshd: nitro [net]"
+
+Apr 07 18:34:54 head.sisco sshd[2264990]: error: kex_exchange_identification: Connection closed by remote host
+Apr 07 18:34:54 head.sisco sshd[2264990]: Connection closed by ::1 port 52342
+Apr 07 18:35:36 head.sisco sshd[2266938]: Accepted publickey for turbo_threads from ::1 port 57974 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:35:36 head.sisco sshd[2266938]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+Apr 07 18:35:37 head.sisco sshd[2266964]: Accepted publickey for turbo_threads from ::1 port 57988 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:35:37 head.sisco sshd[2266964]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+Apr 07 18:38:34 head.sisco sshd[2275300]: Accepted publickey for turbo_threads from ::1 port 50064 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:38:34 head.sisco sshd[2275300]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+Apr 07 18:38:34 head.sisco sshd[2275344]: Accepted publickey for turbo_threads from ::1 port 50068 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:38:34 head.sisco sshd[2275344]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+set mark: ...skipping...
+? sshd.service - OpenSSH server daemon
+     Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; preset: enabled)
+     Active: active (running) since Mon 2026-04-06 19:52:28 SAST; 22h ago
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+   Main PID: 1098 (sshd)
+      Tasks: 3 (limit: 203320)
+     Memory: 56.6M (peak: 85.3M)
+        CPU: 43.204s
+     CGroup: /system.slice/sshd.service
+             +-   1098 "sshd: /usr/sbin/sshd -D [listener] 1 of 10-100 startups"
+             +-2280447 "sshd: nitro [priv]"
+             +-2280448 "sshd: nitro [net]"
+
+Apr 07 18:34:54 head.sisco sshd[2264990]: error: kex_exchange_identification: Connection closed by remote host
+Apr 07 18:34:54 head.sisco sshd[2264990]: Connection closed by ::1 port 52342
+Apr 07 18:35:36 head.sisco sshd[2266938]: Accepted publickey for turbo_threads from ::1 port 57974 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:35:36 head.sisco sshd[2266938]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+Apr 07 18:35:37 head.sisco sshd[2266964]: Accepted publickey for turbo_threads from ::1 port 57988 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:35:37 head.sisco sshd[2266964]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+Apr 07 18:38:34 head.sisco sshd[2275300]: Accepted publickey for turbo_threads from ::1 port 50064 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:38:34 head.sisco sshd[2275300]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+Apr 07 18:38:34 head.sisco sshd[2275344]: Accepted publickey for turbo_threads from ::1 port 50068 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:38:34 head.sisco sshd[2275344]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+...skipping...
+? sshd.service - OpenSSH server daemon
+     Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; preset: enabled)
+     Active: active (running) since Mon 2026-04-06 19:52:28 SAST; 22h ago
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+   Main PID: 1098 (sshd)
+      Tasks: 3 (limit: 203320)
+     Memory: 56.6M (peak: 85.3M)
+        CPU: 43.204s
+     CGroup: /system.slice/sshd.service
+             +-   1098 "sshd: /usr/sbin/sshd -D [listener] 1 of 10-100 startups"
+             +-2280447 "sshd: nitro [priv]"
+             +-2280448 "sshd: nitro [net]"
+
+Apr 07 18:34:54 head.sisco sshd[2264990]: error: kex_exchange_identification: Connection closed by remote host
+Apr 07 18:34:54 head.sisco sshd[2264990]: Connection closed by ::1 port 52342
+Apr 07 18:35:36 head.sisco sshd[2266938]: Accepted publickey for turbo_threads from ::1 port 57974 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:35:36 head.sisco sshd[2266938]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+Apr 07 18:35:37 head.sisco sshd[2266964]: Accepted publickey for turbo_threads from ::1 port 57988 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:35:37 head.sisco sshd[2266964]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+Apr 07 18:38:34 head.sisco sshd[2275300]: Accepted publickey for turbo_threads from ::1 port 50064 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:38:34 head.sisco sshd[2275300]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+Apr 07 18:38:34 head.sisco sshd[2275344]: Accepted publickey for turbo_threads from ::1 port 50068 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:38:34 head.sisco sshd[2275344]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+? sshd.service - OpenSSH server daemon
+     Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; preset: enabled)
+     Active: active (running) since Mon 2026-04-06 19:52:28 SAST; 22h ago
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+   Main PID: 1098 (sshd)
+      Tasks: 3 (limit: 203320)
+     Memory: 56.6M (peak: 85.3M)
+        CPU: 43.204s
+     CGroup: /system.slice/sshd.service
+             +-   1098 "sshd: /usr/sbin/sshd -D [listener] 1 of 10-100 startups"
+             +-2280447 "sshd: nitro [priv]"
+             +-2280448 "sshd: nitro [net]"
+
+Apr 07 18:34:54 head.sisco sshd[2264990]: error: kex_exchange_identification: Connection closed by remote host
+Apr 07 18:34:54 head.sisco sshd[2264990]: Connection closed by ::1 port 52342
+Apr 07 18:35:36 head.sisco sshd[2266938]: Accepted publickey for turbo_threads from ::1 port 57974 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:35:36 head.sisco sshd[2266938]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+Apr 07 18:35:37 head.sisco sshd[2266964]: Accepted publickey for turbo_threads from ::1 port 57988 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:35:37 head.sisco sshd[2266964]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+Apr 07 18:38:34 head.sisco sshd[2275300]: Accepted publickey for turbo_threads from ::1 port 50064 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:38:34 head.sisco sshd[2275300]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+Apr 07 18:38:34 head.sisco sshd[2275344]: Accepted publickey for turbo_threads from ::1 port 50068 ssh2: ED25519 SHA256:cx1UT>
+Apr 07 18:38:34 head.sisco sshd[2275344]: pam_unix(sshd:session): session opened for user turbo_threads(uid=30011) by turbo_t>
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+[straw_hats@head task2]$ systemctl list-units --type=service --state=running
+  UNIT                     LOAD   ACTIVE SUB     DESCRIPTION
+  auditd.service           loaded active running Security Auditing Service
+  autossh.service          loaded active running Reverse SSH Tunnel
+  beegfs-helperd.service   loaded active running BeeGFS Helperd
+  beegfs-mgmtd.service     loaded active running BeeGFS Management Server
+  chronyd.service          loaded active running NTP client/server
+  crond.service            loaded active running Command Scheduler
+  dbus-broker.service      loaded active running D-Bus System Message Bus
+  getty@tty1.service       loaded active running Getty on tty1
+  gssproxy.service         loaded active running GSSAPI Proxy Daemon
+  irqbalance.service       loaded active running irqbalance daemon
+  munge.service            loaded active running MUNGE authentication service
+  NetworkManager.service   loaded active running Network Manager
+  nfs-idmapd.service       loaded active running NFSv4 ID-name mapping service
+  nfs-mountd.service       loaded active running NFS Mount Daemon
+  nfsdcld.service          loaded active running NFSv4 Client Tracking Daemon
+  rdma-ndd.service         loaded active running RDMA Node Description Daemon
+  rpc-statd.service        loaded active running NFS status monitor for NFSv2/3 locking.
+  rpcbind.service          loaded active running RPC Bind
+  rsyslog.service          loaded active running System Logging Service
+  slurmctld.service        loaded active running Slurm controller daemon
+  sshd.service             loaded active running OpenSSH server daemon
+  systemd-journald.service loaded active running Journal Service
+  systemd-logind.service   loaded active running User Login Management
+  systemd-udevd.service    loaded active running Rule-based Manager for Device Events and Files
+  user@30003.service       loaded active running User Manager for UID 30003
+  user@30010.service       loaded active running User Manager for UID 30010
+  user@30011.service       loaded active running User Manager for UID 30011
+  user@30012.service       loaded active running User Manager for UID 30012
+  user@30015.service       loaded active running User Manager for UID 30015
+  user@30017.service       loaded active running User Manager for UID 30017
+  user@30018.service       loaded active running User Manager for UID 30018
+  user@30020.service       loaded active running User Manager for UID 30020
+  user@30021.service       loaded active running User Manager for UID 30021
+  user@30022.service       loaded active running User Manager for UID 30022
+lines 1-35...skipping...
+  UNIT                     LOAD   ACTIVE SUB     DESCRIPTION
+  auditd.service           loaded active running Security Auditing Service
+  autossh.service          loaded active running Reverse SSH Tunnel
+  beegfs-helperd.service   loaded active running BeeGFS Helperd
+  beegfs-mgmtd.service     loaded active running BeeGFS Management Server
+  chronyd.service          loaded active running NTP client/server
+  crond.service            loaded active running Command Scheduler
+  dbus-broker.service      loaded active running D-Bus System Message Bus
+  getty@tty1.service       loaded active running Getty on tty1
+  gssproxy.service         loaded active running GSSAPI Proxy Daemon
+  irqbalance.service       loaded active running irqbalance daemon
+  munge.service            loaded active running MUNGE authentication service
+  NetworkManager.service   loaded active running Network Manager
+  nfs-idmapd.service       loaded active running NFSv4 ID-name mapping service
+  nfs-mountd.service       loaded active running NFS Mount Daemon
+  nfsdcld.service          loaded active running NFSv4 Client Tracking Daemon
+  rdma-ndd.service         loaded active running RDMA Node Description Daemon
+  rpc-statd.service        loaded active running NFS status monitor for NFSv2/3 locking.
+  rpcbind.service          loaded active running RPC Bind
+  rsyslog.service          loaded active running System Logging Service
+  slurmctld.service        loaded active running Slurm controller daemon
+  sshd.service             loaded active running OpenSSH server daemon
+  systemd-journald.service loaded active running Journal Service
+  systemd-logind.service   loaded active running User Login Management
+  systemd-udevd.service    loaded active running Rule-based Manager for Device Events and Files
+  user@30003.service       loaded active running User Manager for UID 30003
+  user@30010.service       loaded active running User Manager for UID 30010
+  user@30011.service       loaded active running User Manager for UID 30011
+  user@30012.service       loaded active running User Manager for UID 30012
+  user@30015.service       loaded active running User Manager for UID 30015
+  user@30017.service       loaded active running User Manager for UID 30017
+  user@30018.service       loaded active running User Manager for UID 30018
+  user@30020.service       loaded active running User Manager for UID 30020
+  user@30021.service       loaded active running User Manager for UID 30021
+  user@30022.service       loaded active running User Manager for UID 30022
+
+LOAD   = Reflects whether the unit definition was properly loaded.
+ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
+SUB    = The low-level unit activation state, values depend on unit type.
+34 loaded units listed.
+lines 1-40...skipping...
+  UNIT                     LOAD   ACTIVE SUB     DESCRIPTION
+  auditd.service           loaded active running Security Auditing Service
+  autossh.service          loaded active running Reverse SSH Tunnel
+  beegfs-helperd.service   loaded active running BeeGFS Helperd
+  beegfs-mgmtd.service     loaded active running BeeGFS Management Server
+  chronyd.service          loaded active running NTP client/server
+  crond.service            loaded active running Command Scheduler
+  dbus-broker.service      loaded active running D-Bus System Message Bus
+  getty@tty1.service       loaded active running Getty on tty1
+  gssproxy.service         loaded active running GSSAPI Proxy Daemon
+  irqbalance.service       loaded active running irqbalance daemon
+  munge.service            loaded active running MUNGE authentication service
+  NetworkManager.service   loaded active running Network Manager
+  nfs-idmapd.service       loaded active running NFSv4 ID-name mapping service
+  nfs-mountd.service       loaded active running NFS Mount Daemon
+  nfsdcld.service          loaded active running NFSv4 Client Tracking Daemon
+  rdma-ndd.service         loaded active running RDMA Node Description Daemon
+  rpc-statd.service        loaded active running NFS status monitor for NFSv2/3 locking.
+  rpcbind.service          loaded active running RPC Bind
+  rsyslog.service          loaded active running System Logging Service
+  slurmctld.service        loaded active running Slurm controller daemon
+  sshd.service             loaded active running OpenSSH server daemon
+  systemd-journald.service loaded active running Journal Service
+  systemd-logind.service   loaded active running User Login Management
+  systemd-udevd.service    loaded active running Rule-based Manager for Device Events and Files
+  user@30003.service       loaded active running User Manager for UID 30003
+  user@30010.service       loaded active running User Manager for UID 30010
+  user@30011.service       loaded active running User Manager for UID 30011
+  user@30012.service       loaded active running User Manager for UID 30012
+  user@30015.service       loaded active running User Manager for UID 30015
+  user@30017.service       loaded active running User Manager for UID 30017
+  user@30018.service       loaded active running User Manager for UID 30018
+  user@30020.service       loaded active running User Manager for UID 30020
+  user@30021.service       loaded active running User Manager for UID 30021
+  user@30022.service       loaded active running User Manager for UID 30022
+
+LOAD   = Reflects whether the unit definition was properly loaded.
+ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
+SUB    = The low-level unit activation state, values depend on unit type.
+34 loaded units listed.
+~
+~
+~
+~
+~
+lines 1-40/40 (END)...skipping...
+  UNIT                     LOAD   ACTIVE SUB     DESCRIPTION
+  auditd.service           loaded active running Security Auditing Service
+  autossh.service          loaded active running Reverse SSH Tunnel
+  beegfs-helperd.service   loaded active running BeeGFS Helperd
+  beegfs-mgmtd.service     loaded active running BeeGFS Management Server
+  chronyd.service          loaded active running NTP client/server
+  crond.service            loaded active running Command Scheduler
+  dbus-broker.service      loaded active running D-Bus System Message Bus
+  getty@tty1.service       loaded active running Getty on tty1
+  gssproxy.service         loaded active running GSSAPI Proxy Daemon
+  irqbalance.service       loaded active running irqbalance daemon
+  munge.service            loaded active running MUNGE authentication service
+  NetworkManager.service   loaded active running Network Manager
+  nfs-idmapd.service       loaded active running NFSv4 ID-name mapping service
+  nfs-mountd.service       loaded active running NFS Mount Daemon
+  nfsdcld.service          loaded active running NFSv4 Client Tracking Daemon
+  rdma-ndd.service         loaded active running RDMA Node Description Daemon
+  rpc-statd.service        loaded active running NFS status monitor for NFSv2/3 locking.
+  rpcbind.service          loaded active running RPC Bind
+  rsyslog.service          loaded active running System Logging Service
+  slurmctld.service        loaded active running Slurm controller daemon
+  sshd.service             loaded active running OpenSSH server daemon
+  systemd-journald.service loaded active running Journal Service
+  systemd-logind.service   loaded active running User Login Management
+  systemd-udevd.service    loaded active running Rule-based Manager for Device Events and Files
+  user@30003.service       loaded active running User Manager for UID 30003
+  user@30010.service       loaded active running User Manager for UID 30010
+  user@30011.service       loaded active running User Manager for UID 30011
+  user@30012.service       loaded active running User Manager for UID 30012
+  user@30015.service       loaded active running User Manager for UID 30015
+  user@30017.service       loaded active running User Manager for UID 30017
+  user@30018.service       loaded active running User Manager for UID 30018
+  user@30020.service       loaded active running User Manager for UID 30020
+  user@30021.service       loaded active running User Manager for UID 30021
+  user@30022.service       loaded active running User Manager for UID 30022
+
+LOAD   = Reflects whether the unit definition was properly loaded.
+ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
+SUB    = The low-level unit activation state, values depend on unit type.
+34 loaded units listed.
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+lines 1-40/40 (END)
+  UNIT                     LOAD   ACTIVE SUB     DESCRIPTION
+  auditd.service           loaded active running Security Auditing Service
+  autossh.service          loaded active running Reverse SSH Tunnel
+  beegfs-helperd.service   loaded active running BeeGFS Helperd
+  beegfs-mgmtd.service     loaded active running BeeGFS Management Server
+  chronyd.service          loaded active running NTP client/server
+  crond.service            loaded active running Command Scheduler
+  dbus-broker.service      loaded active running D-Bus System Message Bus
+  getty@tty1.service       loaded active running Getty on tty1
+  gssproxy.service         loaded active running GSSAPI Proxy Daemon
+  irqbalance.service       loaded active running irqbalance daemon
+  munge.service            loaded active running MUNGE authentication service
+  NetworkManager.service   loaded active running Network Manager
+  nfs-idmapd.service       loaded active running NFSv4 ID-name mapping service
+  nfs-mountd.service       loaded active running NFS Mount Daemon
+  nfsdcld.service          loaded active running NFSv4 Client Tracking Daemon
+  rdma-ndd.service         loaded active running RDMA Node Description Daemon
+  rpc-statd.service        loaded active running NFS status monitor for NFSv2/3 locking.
+  rpcbind.service          loaded active running RPC Bind
+  rsyslog.service          loaded active running System Logging Service
+  slurmctld.service        loaded active running Slurm controller daemon
+  sshd.service             loaded active running OpenSSH server daemon
+  systemd-journald.service loaded active running Journal Service
+  systemd-logind.service   loaded active running User Login Management
+  systemd-udevd.service    loaded active running Rule-based Manager for Device Events and Files
+  user@30003.service       loaded active running User Manager for UID 30003
+  user@30010.service       loaded active running User Manager for UID 30010
+  user@30011.service       loaded active running User Manager for UID 30011
+  user@30012.service       loaded active running User Manager for UID 30012
+  user@30015.service       loaded active running User Manager for UID 30015
+  user@30017.service       loaded active running User Manager for UID 30017
+  user@30018.service       loaded active running User Manager for UID 30018
+  user@30020.service       loaded active running User Manager for UID 30020
+  user@30021.service       loaded active running User Manager for UID 30021
+  user@30022.service       loaded active running User Manager for UID 30022
+
+LOAD   = Reflects whether the unit definition was properly loaded.
+ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
+SUB    = The low-level unit activation state, values depend on unit type.
+34 loaded units listed.
+~
+~
+~
+~
+~
+lines 1-40/40 (END)
+  UNIT                     LOAD   ACTIVE SUB     DESCRIPTION
+  auditd.service           loaded active running Security Auditing Service
+  autossh.service          loaded active running Reverse SSH Tunnel
+  beegfs-helperd.service   loaded active running BeeGFS Helperd
+  beegfs-mgmtd.service     loaded active running BeeGFS Management Server
+  chronyd.service          loaded active running NTP client/server
+  crond.service            loaded active running Command Scheduler
+  dbus-broker.service      loaded active running D-Bus System Message Bus
+  getty@tty1.service       loaded active running Getty on tty1
+  gssproxy.service         loaded active running GSSAPI Proxy Daemon
+  irqbalance.service       loaded active running irqbalance daemon
+  munge.service            loaded active running MUNGE authentication service
+  NetworkManager.service   loaded active running Network Manager
+  nfs-idmapd.service       loaded active running NFSv4 ID-name mapping service
+  nfs-mountd.service       loaded active running NFS Mount Daemon
+  nfsdcld.service          loaded active running NFSv4 Client Tracking Daemon
+  rdma-ndd.service         loaded active running RDMA Node Description Daemon
+  rpc-statd.service        loaded active running NFS status monitor for NFSv2/3 locking.
+  rpcbind.service          loaded active running RPC Bind
+  rsyslog.service          loaded active running System Logging Service
+  slurmctld.service        loaded active running Slurm controller daemon
+  sshd.service             loaded active running OpenSSH server daemon
+  systemd-journald.service loaded active running Journal Service
+  systemd-logind.service   loaded active running User Login Management
+  systemd-udevd.service    loaded active running Rule-based Manager for Device Events and Files
+  user@30003.service       loaded active running User Manager for UID 30003
+  user@30010.service       loaded active running User Manager for UID 30010
+  user@30011.service       loaded active running User Manager for UID 30011
+  user@30012.service       loaded active running User Manager for UID 30012
+  user@30015.service       loaded active running User Manager for UID 30015
+  user@30017.service       loaded active running User Manager for UID 30017
+  user@30018.service       loaded active running User Manager for UID 30018
+  user@30020.service       loaded active running User Manager for UID 30020
+  user@30021.service       loaded active running User Manager for UID 30021
+  user@30022.service       loaded active running User Manager for UID 30022
+
+LOAD   = Reflects whether the unit definition was properly loaded.
+ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
+SUB    = The low-level unit activation state, values depend on unit type.
+34 loaded units listed.
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+lines 1-40/40 (END)...skipping...
+  UNIT                     LOAD   ACTIVE SUB     DESCRIPTION
+  auditd.service           loaded active running Security Auditing Service
+  autossh.service          loaded active running Reverse SSH Tunnel
+  beegfs-helperd.service   loaded active running BeeGFS Helperd
+  beegfs-mgmtd.service     loaded active running BeeGFS Management Server
+  chronyd.service          loaded active running NTP client/server
+  crond.service            loaded active running Command Scheduler
+  dbus-broker.service      loaded active running D-Bus System Message Bus
+  getty@tty1.service       loaded active running Getty on tty1
+  gssproxy.service         loaded active running GSSAPI Proxy Daemon
+  irqbalance.service       loaded active running irqbalance daemon
+  munge.service            loaded active running MUNGE authentication service
+  NetworkManager.service   loaded active running Network Manager
+  nfs-idmapd.service       loaded active running NFSv4 ID-name mapping service
+  nfs-mountd.service       loaded active running NFS Mount Daemon
+  nfsdcld.service          loaded active running NFSv4 Client Tracking Daemon
+  rdma-ndd.service         loaded active running RDMA Node Description Daemon
+  rpc-statd.service        loaded active running NFS status monitor for NFSv2/3 locking.
+  rpcbind.service          loaded active running RPC Bind
+  rsyslog.service          loaded active running System Logging Service
+  slurmctld.service        loaded active running Slurm controller daemon
+  sshd.service             loaded active running OpenSSH server daemon
+  systemd-journald.service loaded active running Journal Service
+  systemd-logind.service   loaded active running User Login Management
+  systemd-udevd.service    loaded active running Rule-based Manager for Device Events and Files
+  user@30003.service       loaded active running User Manager for UID 30003
+  user@30010.service       loaded active running User Manager for UID 30010
+  user@30011.service       loaded active running User Manager for UID 30011
+  user@30012.service       loaded active running User Manager for UID 30012
+  user@30015.service       loaded active running User Manager for UID 30015
+  user@30017.service       loaded active running User Manager for UID 30017
+  user@30018.service       loaded active running User Manager for UID 30018
+  user@30020.service       loaded active running User Manager for UID 30020
+  user@30021.service       loaded active running User Manager for UID 30021
+  user@30022.service       loaded active running User Manager for UID 30022
+
+LOAD   = Reflects whether the unit definition was properly loaded.
+ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
+SUB    = The low-level unit activation state, values depend on unit type.
+34 loaded units listed.
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+[straw_hats@head task2]$ nano TEAMNAME.md
+[straw_hats@head task2]$

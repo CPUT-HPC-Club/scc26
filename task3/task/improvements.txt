@@ -1,0 +1,8 @@
+1. TASK3.out file:
+-We had to reconfigure the HPL.dat file such that the hpl results are displayed on the .out file instead of the terminal by adding file name and modifying device out from 6 to file
+
+2. ONE test with one call:
+-the terminal printed out multiple results after executing the xhpl file, so we modified the HPL.dat file one more time such that it would print out only one result. We changed number of sizes to 1, we changed line 6 (NS) to 10000, number of block sizes to 1, 1 number of process grids, 1 P value and 1 Q value
+
+3. Different Libraries:
+-instead of BLAS and Atlas, we used OpenBLAS libraries this time to run the xhpl file. We loaded openblas module then created a makefile for it
