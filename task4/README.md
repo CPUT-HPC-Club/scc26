@@ -182,14 +182,53 @@ You will encounter most of the expected tasks while you work through the Task. B
 
 By completing the first successful run and visualisation of the Quantum Volume micro-benchmark, the python code in `qv_experiment.py` script is as follows:<br>
 ```python
-# Paste you code here for marks
+# from qiskit import *
+from qiskit.circuit.library import *
+from qiskit_aer import *
+import time
+import numpy as np
+import matplotlib.pyplot as plt
+
+def quant_vol(qubits=15,shots=1, depth=10):
+   sim = AerSimulator(method='statevector', device='CPU')
+   circuit = QuantumVolume(qubits, depth, seed=0)
+   circuit.measure_all()
+   circuit = transpile(circuit, sim)
+
+   start = time.time()
+   result = sim.run(circuit, shots=1, seed_simulator=12345).result()
+   time_val = time.time() - start
+   return time_val
+
+
+num_qubits = np.arange(2, 10)
+qv_depth = 5
+num_shots = 10
+
+# Array for storing the output results
+results_array = []
+
+# iterate over qv depth and number of qubits
+for i in num_qubits:
+   results_array.append(quant_vol(qubits=i, shots=num_shots, depth=qv_depth))
+   # for debugging purposes you can print out the results
+   print(f"Qubits: {i}, Time: {results_array[-1]:.4f} seconds")
+
+# Fill in the missing package and library
+
+plt.xlabel('Number of qubits')
+plt.ylabel('Time (sec)')
+plt.plot(num_qubits, results_array)
+plt.title('Quantum Volume Experiment with depth=' + str(qv_depth))
+plt.savefig('qv_experiment.png')   
 ```
 
 When the above code is run and visualised in JupyterLab, the image below is generated,<br>
  
-> Add image for of initial qv_experiment.py result. When
 > `num_qubits=(2,10)`, `qv_depth=5`, `num_shots=10`
 > This will also count as proof that you have successfully launched JupyterLab.
+
+![Image for initial qv_experiment.py result](images/qv_experiment_graph.png)
 
 We will now consider what affect each parameter has on the outcome.
 
@@ -206,14 +245,23 @@ We will now consider what affect each parameter has on the outcome.
 
 * ### Varying number of qubits
 
-   Write a section discussing the affect of varying the number of qubits.<br>
-   Vary `num_qubits` and see how high you can go. Label visualisation of maximum as `qv_experiment_MAXqubits.png` in the images folder.<br>
-   I only expect one image when you have reached the highest number of qubits the system can handle.<br>
+   The affect of increasing number of qubits is an exponential growth in runtime with respect to amount of qubits. 
+   Initially the first few number of qubits print fast, but as the count increases towards the max of 30, it slows down. 
+
+   Using the graph we can see that from qubits number 2 till 20 it incremented the fastest, from 20 to 25 incrementing began to slow down. Then from 25 to 30 (Max qubits) we observed the       incrementing slowed down and "appears" to stop at 30. We say 30 is the max because by the time the curve reaches 30 number of qubits, it is extremely steep, it still increases further but reached its limit to measure (would take too long to get next result). 
+   <br>
    > `qubits`: number or list of physical qubits to be simulated for the experiment.
-
-
+   
+   ![Image for max qubits result](images/qv_experiment_MAXqubits.png)
 *  ### Varying number of shots
 
-   Write a section similar to [varying depth](#varying-volume-depth) discussing the affect of varying the number of shots.<br>
-   Vary `num_shots`. Minimum of 2 images presented in an easily understandable format like a table or bullet points with discussion blocks.<br>
+   Case 1: With the number of shots low, the graph grows exponentially with number of qubits with respect to time. Runtime is quick and but sampling accuracy is low.
+   
+   Case 2 and 3: Due to a higher number of shots being more demanding to the system we see a steep increase in runtime, but more accurate sampling results compared to case 1.
+  
    >`shots`: used for sampling statistics, number of repetitions of each circuit. A larger number of shots will be more demanding on the system.
+
+   | **Case 1** `num_shots=10` (default) | **Case 2** `num_shots=15` | **Case 3** `num_shots=20` |
+   |-------------------------------------|---------------------------|---------------------------|
+   | `num_qubits=(2,20)`<br>`qv_depth=5`<br>`num_shots=10`<br><br> <img src="images/qv_experiment_qbt20_dep5_shot10.png" width="400"> | `num_qubits=(2,20)`<br>`qv_depth=5`<br>`num_shots=15`<br><br> <img src="images/qv_experiment_NUMshots15.png" width="400"> | `num_qubits=(2,20)`<br>`qv_depth=10`<br>`num_shots=20`<br><br> <img src="images/qv_experiment_NUMshots20.png" width="400"> 
+

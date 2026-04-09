@@ -10,11 +10,11 @@ Parallel {
 
 Hamiltonian = DFTB {
   SCC = Yes
-  SCCTolerance = 1e-6
-  MaxSCCIterations = 200
+  SCCTolerance = 1e-4
+  MaxSCCIterations = 800
 
   SlaterKosterFiles = Type2FileNames {
-    Prefix = "/home/<username>/dftb_workspace/dftb_parameters/3ob-3-1/"
+    Prefix = "/home/hive_minds/dftb_workspace/dftb_parameters/3ob-3-1/"
     Separator = "-"
     Suffix = ".skf"
   }

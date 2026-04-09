@@ -1,0 +1,102 @@
+|===============================================================================
+|
+|  DFTB+ development version (commit: 83e72f5d, base: 25.1)
+|
+|  Copyright (C) 2006 - 2025  DFTB+ developers group
+|
+|===============================================================================
+|
+|  When publishing results obtained with DFTB+, please cite the following
+|  reference:
+|
+|    Recent Developments in DFTB+, a Software Package for Efficient Atomistic
+|    Quantum Mechanical Simulations, J. Phys. Chem. A 129, 5373−5390 (2025).
+|    [https://doi.org/10.1021/acs.jpca.5c01146]
+|
+|  You should also cite additional publications crediting the parametrization
+|  data you use. Please consult the documentation of the SK-files for the
+|  references.
+|
+|===============================================================================
+
+Reading input file 'dftb_in.hsd'
+Parser version: 15
+
+--------------------------------------------------------------------------------
+***  Converting input from parser version 14 to parser version 15 ...
+***  Done.
+
+Reading SK-files:
+/home/hive_minds/dftb_workspace/dftb_parameters/3ob-3-1/O-O.skf
+/home/hive_minds/dftb_workspace/dftb_parameters/3ob-3-1/O-H.skf
+/home/hive_minds/dftb_workspace/dftb_parameters/3ob-3-1/H-H.skf
+Done.
+
+
+Processed input in HSD format written to 'dftb_pin.hsd'
+
+Starting initialization...
+--------------------------------------------------------------------------------
+WARNING!
+-> Dipole printed for extended system : value printed is not well defined
+MPI processes:               16
+OpenMP threads:              1
+BLACS orbital grid size:     4 x 4
+BLACS atom grid size:        4 x 4
+Chosen random seed:          1298014499
+Current stacksize:           unlimited
+Mode:                        Static calculation
+Self consistent charges:     Yes
+SCC-tolerance:                 0.100000E-03
+Max. scc iterations:                    800
+Shell resolved Hubbard:      No
+Spin polarisation:           No
+Nr. of up electrons:           256.000000
+Nr. of down electrons:         256.000000
+Periodic boundaries:         Yes
+Electronic solver:           Relatively robust
+Mixer:                       Broyden mixer
+Mixing parameter:                  0.200000
+Nr. of chrg. vec. in memory:            800
+Max. SCC-cycles:                        800
+Electronic temperature:              0.100000E-07 H      0.272114E-06 eV
+Initial charges:             Set automatically (system chrg:   0.000E+00)
+Included shells:             O:  s, p
+                             H:  s
+K-points and weights:           1:  0.000000  0.000000  0.000000     1.000000
+
+K-points in absolute space:     1:  0.000000  0.000000  0.000000
+
+Extra options:
+                             Mulliken analysis
+
+--------------------------------------------------------------------------------
+
+***  Geometry step: 0
+
+ iSCC Total electronic   Diff electronic      SCC error    
+    1   -0.26321521E+03    0.00000000E+00    0.85219655E+00
+    2   -0.26338702E+03   -0.26321521E+03    0.64713926E+00
+    3   -0.26360646E+03   -0.17180443E+00    0.42997506E-01
+    4   -0.26360699E+03   -0.21944486E+00    0.18421564E-01
+    5   -0.26360708E+03   -0.52950042E-03    0.24060884E-02
+    6   -0.26360708E+03   -0.86341309E-04    0.51595931E-03
+    7   -0.26360708E+03   -0.78144541E-06    0.15351693E-03
+>> Charges saved for restart in charges.bin
+    8   -0.26360708E+03   -0.50458425E-07    0.17427007E-04
+
+Total Energy:                     -259.6780928913 H        -7066.2004 eV
+Extrapolated to 0K:               -259.6780928913 H        -7066.2004 eV
+Total Mermin free energy:         -259.6780928913 H        -7066.2004 eV
+Force related energy:             -259.6780928913 H        -7066.2004 eV
+
+
+--------------------------------------------------------------------------------
+DFTB+ running times                          cpu [s]             wall clock [s]
+--------------------------------------------------------------------------------
+Pre-SCC initialisation                 +       0.03 (  5.6%)       0.03 (  5.2%)
+SCC                                    +       0.46 ( 93.8%)       0.49 ( 92.7%)
+--------------------------------------------------------------------------------
+Missing                                +       0.00 (  0.6%)       0.01 (  2.1%)
+Total                                  =       0.49 (100.0%)       0.52 (100.0%)
+--------------------------------------------------------------------------------
