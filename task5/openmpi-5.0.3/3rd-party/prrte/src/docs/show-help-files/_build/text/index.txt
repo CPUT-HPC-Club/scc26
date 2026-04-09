@@ -1,0 +1,76 @@
+The only purpose of this file is for Sphinx to have a top-level source
+RST file that includes all the others.
+
+This file -- and the "index.txt" file that it generates -- is not used
+by PRTE code.  **PRTE code only uses the individually ``help-*.txt``
+files that Sphinx generates.**  The additional output files that
+Sphinx generates in the "_build/text" tree are just harmelss by-
+products; we ignore them.
+
+* Pinfo
+
+* Prte
+
+* Prted
+
+* Hello, world
+
+  * Relative host indexing
+
+  * Overview
+
+* Quick Summary
+
+  * Definition of 'slot'
+
+* Slots are not hardware resources
+
+  * Definition of "processor element"
+
+  * Examples
+
+* Specifying Host Nodes
+
+* Process Mapping / Ranking / Binding Options
+
+* Specifying Host Nodes
+
+* Specifying Number of Processes
+
+* Mapping Processes to Nodes Using Policies
+
+  * Rankfiles
+
+  * Deprecated options
+
+  * Diagnostics
+
+  * Fundamentals
+
+  * Overloading and Oversubscribing
+
+* Overloading vs. Oversubscription: Package Example
+
+* Overloading vs. Oversubscription: Hardware Threads Example
+
+* Prun
+
+  * Relative host indexing
+
+* Prun
+
+* Psched
+
+* Prte runtime
+
+* Hwloc base
+
+* Regex
+
+* CLI
+
+* Util
+
+* Hostfiles
+
+* Dash host

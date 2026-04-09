@@ -1,11 +1,9 @@
 #!/bin/bash
 #SBATCH --job-name=dftb_water
 #SBATCH --partition=club
-#SBATCH --nodelist=com[xx-xx]
-#SBATCH --nodes=xx
-#SBATCH --ntasks-per-node=xx
-#SBATCH --ntasks=xx
-#SBATCH --cpus-per-task=xx
+#SBATCH --nodes=3
+#SBATCH --ntasks-per-node=16
+#SBATCH --ntasks=48
 #SBATCH --time=01:00:00
 #SBATCH --output=dftb_%j.out
 #SBATCH --error=dftb_%j.err
@@ -16,7 +14,7 @@ ml gcc openmpi openBLAS scalapack
  
 # Environment
 export PATH=${HOME}/opt/dftbplus/bin:${PATH}
-export OMP_NUM_THREADS=xx
+export OMP_NUM_THREADS=1
 ulimit -s unlimited
  
 # Fix username placeholder

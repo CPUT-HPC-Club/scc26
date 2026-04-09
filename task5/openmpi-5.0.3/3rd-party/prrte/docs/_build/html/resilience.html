@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11. Resilience &mdash; PMIx Reference Run Time Environment 3.0.5rc2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="12. Developer’s guide" href="developers/index.html" />
+    <link rel="prev" title="10. Session directory" href="session-directory.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PMIx Reference Run Time Environment
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">1. Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">2. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-help.html">3. Getting help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">4. Installing PRRTE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">5. PRRTE DVM Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-things-work/index.html">6. How Things Work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hosts/index.html">7. Host specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="placement/index.html">8. Process placement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notifications.html">9. Notifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="session-directory.html">10. Session directory</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">11. Resilience</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#features">11.1. Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-s-added-to-support-fault-tolerance">11.1.1. What’s added to support fault-tolerance?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building">11.1.2. Building</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running">11.1.3. Running</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#building-your-application">11.1.3.1. Building your application</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-your-application">11.1.3.2. Running your application</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-under-a-batch-scheduler">11.1.3.3. Running under a batch scheduler</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#run-time-tuning-knobs">11.1.4. Run-time tuning knobs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#testing">11.2. Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#copyright">11.3. Copyright</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="developers/index.html">12. Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">13. Contributing to PRRTE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">14. License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="man/index.html">15. PRRTE manual pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="versions.html">16. Software Version Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="news/index.html">17. News</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PMIx Reference Run Time Environment</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">11. </span>Resilience</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/resilience.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <style>
+.wy-table-responsive table td,.wy-table-responsive table th{white-space:normal}
+</style><div class="section" id="resilience">
+<h1><span class="section-number">11. </span>Resilience<a class="headerlink" href="#resilience" title="Permalink to this heading"></a></h1>
+<p>This section documents the features and options specific to the <strong>PRTE
+Level Fault Tolerant</strong> PMIx reference RunTime Environment (PRTE)</p>
+<div class="section" id="features">
+<h2><span class="section-number">11.1. </span>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h2>
+<p>This implementation provides a runtime level failure detection and
+propagation mechanism for both process and node failure.</p>
+<div class="section" id="what-s-added-to-support-fault-tolerance">
+<h3><span class="section-number">11.1.1. </span>What’s added to support fault-tolerance?<a class="headerlink" href="#what-s-added-to-support-fault-tolerance" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>New module under src/mca/errmgr: detector:
+Daemons monitor one another along a ring topology to detect node failures.
+src/mca/odls is in charge of detecting the failure of locally hosted processes
+(using SIGCHLD signals from the operating system).</p></li>
+<li><p>New component: propagate with module prperror:
+Prepares the content of the reliable broadcast messages (i.e., the list of failed processes).
+In order to populate the list of failed processes in node failure cases, the list of processes
+hosted by a particular daemon is collected by prperror module.</p></li>
+<li><p>New module under src/mca/grpcomm: bmg
+The BMG component implements a broadcast algorithm in a reliable way;
+to be noted, this component abides by the normal interface for a daemon
+broadcast and can reliably broadcast any type of information</p></li>
+<li><p>Test case for process failure under example/error_notify.c
+This test uses kill(pid) to kill a process to simulate process failure.</p></li>
+<li><p>Test case for daemon/node failure under example/daemon_error_notify.c
+This test uses kill(ppid) to kill a process’s parent to simulate node failure.</p></li>
+</ol>
+</div>
+<div class="section" id="building">
+<h3><span class="section-number">11.1.2. </span>Building<a class="headerlink" href="#building" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./autogen.pl
+
+<span class="c1"># If you want to run mpi applications, you mpi and PRTE</span>
+<span class="c1"># should have the same version of PMIx and libevent</span>
+
+./configure<span class="w"> </span>--enable-prte-ft<span class="w"> </span>--prefix<span class="o">=</span>...<span class="w">  </span>--with-pmix<span class="o">=</span>/external-pmix-path<span class="w"> </span>--with-libevent<span class="o">=</span>/external-libevent-path
+
+make<span class="w"> </span><span class="o">[</span>-j<span class="w"> </span>N<span class="o">]</span><span class="w"> </span>all<span class="w"> </span>install
+<span class="c1">#    use an integer value of N for parallel builds</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="running">
+<h3><span class="section-number">11.1.3. </span>Running<a class="headerlink" href="#running" title="Permalink to this heading"></a></h3>
+<div class="section" id="building-your-application">
+<h4><span class="section-number">11.1.3.1. </span>Building your application<a class="headerlink" href="#building-your-application" title="Permalink to this heading"></a></h4>
+<p>Compile your application as usual</p>
+<ol class="arabic simple">
+<li><p>using the provided <code class="docutils literal notranslate"><span class="pre">pcc</span></code> for pmix-based application;</p></li>
+<li><p>using your <code class="docutils literal notranslate"><span class="pre">mpicc</span></code> for mpi-based application with a prte-based MPI (e.g., Open MPI).</p></li>
+</ol>
+</div>
+<div class="section" id="running-your-application">
+<h4><span class="section-number">11.1.3.2. </span>Running your application<a class="headerlink" href="#running-your-application" title="Permalink to this heading"></a></h4>
+<p>If running standalone:</p>
+<ol class="arabic simple">
+<li><p>you need to launch first the DVM daemons with <code class="docutils literal notranslate"><span class="pre">prte</span> <span class="pre">--mca</span> <span class="pre">prte_enable_ft</span> <span class="pre">true</span></code>.</p></li>
+<li><p>You can then launch your application with by simply using the provided <code class="docutils literal notranslate"><span class="pre">prun</span> <span class="pre">--enable-recovery</span></code>.</p></li>
+</ol>
+<p>Make sure to set your <code class="docutils literal notranslate"><span class="pre">PATH</span></code> and <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code> properly.</p>
+<p>If running with a PRRTE-based MPI (e.g., Open MPI):</p>
+<ol class="arabic simple">
+<li><p>use <code class="docutils literal notranslate"><span class="pre">mpiexec</span> <span class="pre">--enable-recovery</span> <span class="pre">--mca</span> <span class="pre">prte_enable_ft</span> <span class="pre">true</span></code>.</p></li>
+</ol>
+</div>
+<div class="section" id="running-under-a-batch-scheduler">
+<h4><span class="section-number">11.1.3.3. </span>Running under a batch scheduler<a class="headerlink" href="#running-under-a-batch-scheduler" title="Permalink to this heading"></a></h4>
+<p>This code can operate under a job/batch scheduler, and is tested routinely with Slurm.
+One difficulty comes from the fact that many job schedulers will “cleanup” the
+application as soon as a process fails. In order to avoid this problem, it is preferred
+that you use <code class="docutils literal notranslate"><span class="pre">-k,</span> <span class="pre">--no-kill</span> <span class="pre">[=off]:</span> <span class="pre">Do</span> <span class="pre">not</span> <span class="pre">automatically</span> <span class="pre">terminate</span> <span class="pre">a</span> <span class="pre">job</span> <span class="pre">if</span> <span class="pre">one</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">nodes</span>
+<span class="pre">it</span> <span class="pre">has</span> <span class="pre">been</span> <span class="pre">allocated</span> <span class="pre">fails.</span></code> within an allocation (e.g., <code class="docutils literal notranslate"><span class="pre">salloc</span></code>, <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>) rather than
+a direct launch (e.g. <code class="docutils literal notranslate"><span class="pre">srun</span></code>).</p>
+</div>
+</div>
+<div class="section" id="run-time-tuning-knobs">
+<h3><span class="section-number">11.1.4. </span>Run-time tuning knobs<a class="headerlink" href="#run-time-tuning-knobs" title="Permalink to this heading"></a></h3>
+<p>This code comes with a variety of knobs for controlling how it runs. The default
+parameters are sane and should result in very good performance in most
+cases. You can change those default by <code class="docutils literal notranslate"><span class="pre">--prtemca</span> <span class="pre">parameter</span> <span class="pre">value</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">prte_enable_recovery</span> <span class="pre">&lt;true|false&gt;</span> <span class="pre">(default:</span> <span class="pre">false)</span></code> controls automatic
+cleanup of apps with failed processes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prte_abort_non_zero_exit</span> <span class="pre">&lt;true|false&gt;</span> <span class="pre">(default:</span> <span class="pre">true)</span></code> controls the job
+termination after a error occurred.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">errmgr_detector_enable</span> <span class="pre">&lt;true|false&gt;</span> <span class="pre">(default:</span> <span class="pre">false)</span></code> enable or disable error
+detection and propagation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">errmgr_detector_heartbeat_period</span> <span class="pre">&lt;float&gt;</span> <span class="pre">(default:5s)</span></code> heartbeat
+period. Recommended value is 1/2 of the timeout.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">errmgr_detector_heartbeat_timeout</span> <span class="pre">&lt;float&gt;</span> <span class="pre">(default:10s)</span></code> heartbeat
+timeout (i.e. failure detection speed). Recommended value is 2 times
+the heartbeat period</p></li>
+</ul>
+<dl class="simple">
+<dt>To be noted: if you want to use prte failure detection and propagation features.</dt><dd><p>You MUST set prte_enable_recovery to true,
+prte_abort_non_zero_exit to false.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="testing">
+<h2><span class="section-number">11.2. </span>Testing<a class="headerlink" href="#testing" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 1</span>
+salloc<span class="w"> </span>-k<span class="w"> </span>-N<span class="w"> </span>num_of_nodes<span class="w"> </span>-w<span class="w"> </span>host1,host2...
+<span class="w">     </span>-k,<span class="w"> </span>--no-kill<span class="w"> </span><span class="k">do</span><span class="w"> </span>not<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>job<span class="w"> </span>on<span class="w"> </span>node<span class="w"> </span>failure
+
+<span class="c1"># Step 2</span>
+prte<span class="w"> </span>--prtemca<span class="w"> </span>prte_enable_ft<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--prtemca<span class="w"> </span>errmgr_detector_heartbeat_period<span class="w"> </span><span class="m">0</span>.5<span class="w">  </span><span class="se">\</span>
+<span class="w">     </span>--prtemca<span class="w"> </span>errmgr_detector_heartbeat_timeout<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="se">\</span>
+<span class="w">     </span>--prtemca<span class="w"> </span>errmgr_detector_enable<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--prtemca<span class="w"> </span>prte_abort_on_non_zero_status<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--debug-daemons
+
+<span class="c1"># using &#39;errmgr_detector_enable 1&#39; choose enable the error detector.</span>
+</pre></div>
+</div>
+<p>Config with <code class="docutils literal notranslate"><span class="pre">--enable-debug</span></code>, <code class="docutils literal notranslate"><span class="pre">--debug-daemons</span></code> will give you lots of information.</p>
+<p>Also, the ring detector heartbeat sending frequency is not hard coded,
+you can change heartbeat_peroid and heartbeat_timeout by using MCA
+params.  For example:</p>
+<ul class="simple">
+<li><p>using <code class="docutils literal notranslate"><span class="pre">--prtemca</span> <span class="pre">errmgr_detector_heartbeat_period</span> <span class="pre">10</span></code> set the sending frequency to every 10 seconds(default is 5s)</p></li>
+<li><p>using <code class="docutils literal notranslate"><span class="pre">--prtemca</span> <span class="pre">errmgr_detector_heartbeat_timeout</span> <span class="pre">20</span></code> set timeout to 20 seconds(default is 10s)</p></li>
+</ul>
+<p>Step 3: under example we have 2 test codes <code class="docutils literal notranslate"><span class="pre">error_notify.c</span></code>,
+<code class="docutils literal notranslate"><span class="pre">daemon_error_notify.c</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compile the codes</span>
+pcc<span class="w"> </span>-g<span class="w"> </span>error_notify.c<span class="w"> </span>-o<span class="w"> </span>error_notify
+
+<span class="c1"># Run</span>
+prun<span class="w"> </span>--oversubscribe<span class="w"> </span>--merge-stderr-to-stdout<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--map-by<span class="w"> </span>node:DISPLAY:DISPLAYALLOC<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--report-bindings<span class="w"> </span>--enable-recovery<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--max-restarts<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--continuous<span class="w"> </span>-np<span class="w"> </span>num_of_procs<span class="w"> </span>error_notify<span class="w"> </span>-v
+</pre></div>
+</div>
+<p>If use external pmix:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compile</span>
+pcc<span class="w"> </span>error_notify.c<span class="w"> </span>-o<span class="w"> </span>error_notify_1<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-I/external_pmix_install_path/include<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-L/external_pmix_install_path/lib<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-lpmix
+
+<span class="c1"># Run</span>
+prun<span class="w"> </span>--oversubscribe<span class="w"> </span>-x<span class="w"> </span>LD_LIBRARY_PATH<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--merge-stderr-to-stdout<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--map-by<span class="w"> </span>node:DISPLAY:DISPLAYALLOC<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--report-bindings<span class="w"> </span>--enable-recovery<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--max-restarts<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--continuous<span class="w"> </span>-np<span class="w"> </span>num_of_procs<span class="w"> </span>error_notify_1<span class="w"> </span>-v
+</pre></div>
+</div>
+<p>Iif use external pmix:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compile</span>
+pcc<span class="w"> </span>daemon_error_notify.c<span class="w"> </span>-o<span class="w"> </span>daemon_error_notify_1<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-I/external_pmix_install_path/include<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-L/external_pmix_install_path/lib<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-lpmix
+
+<span class="c1"># Run</span>
+prun<span class="w"> </span>--oversubscribe<span class="w"> </span>-x<span class="w"> </span>LD_LIBRARY_PATH<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--merge-stderr-to-stdout<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--map-by<span class="w"> </span>node:DISPLAY:DISPLAYALLOC<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--report-bindings<span class="w"> </span>--enable-recovery<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--max-restarts<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--continuous<span class="w"> </span>-np<span class="w"> </span>num_of_procs<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>daemon_error_notify_1<span class="w"> </span>-v
+</pre></div>
+</div>
+</div>
+<div class="section" id="copyright">
+<h2><span class="section-number">11.3. </span>Copyright<a class="headerlink" href="#copyright" title="Permalink to this heading"></a></h2>
+<p>Copyright (c) 2018-2020 The University of Tennessee and The University
+of Tennessee Research Foundation.  All rights reserved.</p>
+<p>Copyright (c) 2022      Cisco Systems, Inc.  All rights reserved.
+$COPYRIGHT$</p>
+<p>Additional copyrights may follow</p>
+<p>$HEADER$</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="session-directory.html" class="btn btn-neutral float-left" title="10. Session directory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="developers/index.html" class="btn btn-neutral float-right" title="12. Developer’s guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2003-2024, The PRRTE Community.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -14,7 +14,7 @@ Hamiltonian = DFTB {
   MaxSCCIterations = 200
 
   SlaterKosterFiles = Type2FileNames {
-    Prefix = "/home/<username>/dftb_workspace/dftb_parameters/3ob-3-1/"
+    Prefix = "/home/honda/dftb_workspace/dftb_parameters/3ob-3-1/"
     Separator = "-"
     Suffix = ".skf"
   }
@@ -25,17 +25,18 @@ Hamiltonian = DFTB {
   }
 
   KPointsAndWeights = SupercellFolding {
-    1 0 0
-    0 1 0
-    0 0 1
-    0.0 0.0 0.0
-  }
+  4 0 0
+  0 4 0
+  0 0 4
+  0.5 0.5 0.5
+}
 }
 
 Options {}
 
 Analysis {
-  WriteBandOut = No
+  WriteBandOut = Yes
+  MullikenAnalysis = Yes
 }
 
 ParserOptions {

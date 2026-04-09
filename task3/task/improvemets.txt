@@ -1,0 +1,4 @@
+1. I changed HPL.dat device out to 0 and filename to Task3.out.
+2. I changed PFACTs, NBMIN, and RFACTS in HPL.dat to test only 1 parameter each
+3. I changed Make.Task3 to link OPenBLAS (-lopenblas) instead of Atlas recompiled
+MEMber(Tsedi)

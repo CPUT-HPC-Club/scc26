@@ -1,0 +1,92 @@
+|===============================================================================
+|
+|  DFTB+ development version (commit: 83e72f5d, base: 25.1)
+|
+|  Copyright (C) 2006 - 2025  DFTB+ developers group
+|
+|===============================================================================
+|
+|  When publishing results obtained with DFTB+, please cite the following
+|  reference:
+|
+|    Recent Developments in DFTB+, a Software Package for Efficient Atomistic
+|    Quantum Mechanical Simulations, J. Phys. Chem. A 129, 5373−5390 (2025).
+|    [https://doi.org/10.1021/acs.jpca.5c01146]
+|
+|  You should also cite additional publications crediting the parametrization
+|  data you use. Please consult the documentation of the SK-files for the
+|  references.
+|
+|===============================================================================
+
+Reading input file 'dftb_in.hsd'
+Parser version: 15
+
+--------------------------------------------------------------------------------
+***  Converting input from parser version  7 to parser version 15 ...
+***  Done.
+
+Reading SK-files:
+/home/honda/dftb_workspace/dftb_parameters/3ob-3-1/O-O.skf
+/home/honda/dftb_workspace/dftb_parameters/3ob-3-1/O-H.skf
+/home/honda/dftb_workspace/dftb_parameters/3ob-3-1/H-H.skf
+Done.
+
+
+Processed input in HSD format written to 'dftb_pin.hsd'
+
+Starting initialization...
+--------------------------------------------------------------------------------
+MPI processes:               1
+OpenMP threads:              1
+BLACS orbital grid size:     1 x 1
+BLACS atom grid size:        1 x 1
+Chosen random seed:          1158485988
+Current stacksize:           unlimited
+Mode:                        Static calculation
+Self consistent charges:     Yes
+SCC-tolerance:                 0.100000E-04
+Max. scc iterations:                    100
+Shell resolved Hubbard:      No
+Spin polarisation:           No
+Nr. of up electrons:             4.000000
+Nr. of down electrons:           4.000000
+Periodic boundaries:         No
+Electronic solver:           Relatively robust
+Mixer:                       Broyden mixer
+Mixing parameter:                  0.200000
+Nr. of chrg. vec. in memory:            100
+Max. SCC-cycles:                        100
+Electronic temperature:              0.100000E-07 H      0.272114E-06 eV
+Initial charges:             Set automatically (system chrg:   0.000E+00)
+Included shells:             O:  s, p
+                             H:  s
+Extra options:
+                             Mulliken analysis
+
+--------------------------------------------------------------------------------
+
+***  Geometry step: 0
+
+ iSCC Total electronic   Diff electronic      SCC error    
+    1   -0.41130463E+01    0.00000000E+00    0.78580527E+00
+    2   -0.41162367E+01   -0.41130463E+01    0.58395283E+00
+    3   -0.41202488E+01   -0.31903239E-02    0.42185675E-02
+    4   -0.41202491E+01   -0.40121702E-02    0.27456801E-04
+>> Charges saved for restart in charges.bin
+    5   -0.41202491E+01   -0.21420261E-06    0.90972474E-09
+
+Total Energy:                       -4.0589277747 H         -110.4490 eV
+Extrapolated to 0K:                 -4.0589277747 H         -110.4490 eV
+Total Mermin free energy:           -4.0589277747 H         -110.4490 eV
+Force related energy:               -4.0589277747 H         -110.4490 eV
+
+
+--------------------------------------------------------------------------------
+DFTB+ running times                          cpu [s]             wall clock [s]
+--------------------------------------------------------------------------------
+SCC                                    +       0.00 ( 76.5%)       0.03 ( 78.4%)
+--------------------------------------------------------------------------------
+Missing                                +       0.00 ( 23.5%)       0.01 ( 21.6%)
+Total                                  =       0.01 (100.0%)       0.04 (100.0%)
+--------------------------------------------------------------------------------
